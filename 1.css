@@ -1,3 +1,8 @@
+head{
+    text-align: right;
+
+}
+
 body {
     text-align: center;
     font-family: Arial, Helvetica, sans-serif;
@@ -5,8 +10,8 @@ body {
 }
 
 #board {
-    width: 400px; /* nosaka kā izskatīsies aile kas visu satur */
-    height: 400px;
+ /* nosaka kā izskatīsies aile kas visu satur */
+
     border: 10px solid darkgray;
     background-color: lightgray;
     margin: 0 auto;
@@ -15,10 +20,10 @@ body {
 }
 
 #board div {
-    width: 48px; /* nosaka kā izskatīsies mazās ailes */
-    height: 48px;
+    width: 26px; /* nosaka kā izskatīsies mazās ailes */
+    height: 26px;
     border: 1px solid black;
-    font-size: 30px;
+    font-size: 20px;
     display: flex;
     justify-content: center;
     align-items: center;

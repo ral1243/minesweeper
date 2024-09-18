@@ -1,15 +1,24 @@
 var board = [];
-var columns = 8;
-var rows = 8;
+var columns;
+var rows;
 var mineslocation = [];
-var mineCount = 5;
-var origminecount = mineCount;
+var mineCount;
+var origminecount
 var flagenabled = false;
 var tilesclicked = 0;
 var gameover = false;
 
-window.onload = function(){
-    gamestart();
+function check(){ /* pārbauda vai dati ir reālā daudzumā */
+    columns = document.getElementById("columns").value;
+    rows = document.getElementById("rows").value; 
+    mineCount = document.getElementById("bombs").value;
+    origminecount = document.getElementById("bombs").value;
+    if(rows * columns >= mineCount){
+        gamestart()
+    }
+    else {
+        alert("pārāk daudz bumbas");
+    }
 }
 
 function placemines(){
@@ -31,6 +40,10 @@ function placemines(){
 }
 
 function gamestart(){
+
+    document.getElementById("board").style.width = ((rows * 28) + "px");
+    document.getElementById("board").style.height = ((columns * 28) + "px");
+
     document.getElementById("minecount").innerText = mineCount;
     placemines();
     for(var r = 0;r < rows; r++){
@@ -48,11 +61,11 @@ function gamestart(){
     console.log(board)
 }
 /* uzliek un noņem karogu */
+
 function placeflag(a){ 
 a.preventDefault();  
 let tile = this;
 if(gameover == false){
-    console.log("test");
     if(tile.innerText == ""){
         tile.innerText = "🏁";
         mineCount -= 1;
@@ -139,6 +152,9 @@ function checkmine(r, c){ /* izsauc funkciju checktile uz katras ailes apkārt u
         checkmine(r+1, c); 
         checkmine(r+1, c+1);
     }
+    console.log(tilesclicked);
+    console.log(origminecount);
+
     if(tilesclicked == rows * columns - origminecount){
         gameover = true;
         alert("you won");
